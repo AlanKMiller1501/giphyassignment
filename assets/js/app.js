@@ -42,3 +42,22 @@ function Gif(gifData) {
   container.append(img, rating);
   $("#giphs").append(container);
 }
+    //Click event on button with id of "topic" executes displayGIFS function
+    $(document).on("click", "#topic", displayGIFS);
+  
+    //Click event on gifs with class of "Giphy" executes pausePlayGifs function
+    $(document).on("click", ".Giphy", pausePlayGifs);
+  
+    //Function accesses "data-state" attribute and depending on status, changes image source to "data-animate" or "data-still"
+    function pausePlayGifs() {
+       var state = $(this).attr("data-state");
+        if (state === "still") {
+          $(this).attr("src", $(this).attr("data-animate"));
+          $(this).attr("data-state", "animate");
+        } else {
+          $(this).attr("src", $(this).attr("data-still"));
+          $(this).attr("data-state", "still");
+    }
+  }
+  
+  
